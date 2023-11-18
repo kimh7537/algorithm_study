@@ -1,60 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
-int a1[4]={1,-1,0,0};
-int b1[4]={0,0,1,-1};
 
-int M,N,K;
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+int arr[54][54] = {0, };
+int visited[54][54] = {0, };
+int T, M, N, K;
+vector<int> v;
 
-int arr[51][51];
-bool visited[51][51];
- 
-void dfs(int a, int b){  //a세로, b가로 
-	visited[a][b] = true;
-
-    for(int i = 0 ; i < 4 ; i++){
-    	int res1 = a + a1[i]; //세로 
-    	int res2 = b + b1[i]; //가로 
-    	
-        if(res2 < 0 || res2 >= M || res1 < 0 || res1 >= N) 
-            continue;
-  		
-  		if(arr[res1][res2] == 1){
-  			if(!visited[res1][res2]){
-  				dfs(res1, res2);
-			}
-		}
-    }
+void dfs(int y, int x){
+	visited[y][x] = 1;
+	
+	for(int i = 0 ; i < 4 ; i++){
+		int ny = y + dy[i];
+		int nx = x + dx[i];
+		
+		if(ny < 0 || nx < 0 || ny >= N || nx >= M) continue;
+		if(arr[ny][nx] == 0) continue;
+		if(visited[ny][nx]) continue;
+		dfs(ny, nx);
+	}
 }
- 
+
 int main(){
-    int T;
-    cin >> T;
-    
-    while(T--){
-    	cin >> M >> N >> K;
-    	int count = 0;
-    	for(int i = 0 ; i < K ; i++){
-    		int X, Y;
-    		cin >> X >> Y;
-    		arr[Y][X] = 1;
+	int num1, num2;
+	
+	cin >> T;
+	for(int i = 0 ; i < T ; i++){
+		int cnt = 0;
+		
+		cin >> M >> N >> K;
+		for(int i = 0 ; i < K ; i++){
+			cin >> num1 >> num2;
+			arr[num2][num1] = 1; 
 		}
-    	
-    	for(int i = 0 ; i < N ; i++){
-    		for(int j = 0 ; j < M ; j++){
-    			if(arr[i][j] == 1){
-    				if(!visited[i][j]){
-    					count++;
-    					dfs(i, j);
-					}
+		
+		for(int i = 0 ; i < N ; i++){
+			for(int j = 0 ; j < M ; j++){
+				
+				if((arr[i][j] == 1) && (visited[i][j] == 0)){
+					dfs(i, j);
+					cnt++;
 				}
 			}
 		}
-		cout << count << "\n";
-		memset(visited, false, sizeof(visited));
-		memset(arr, 0 , sizeof(arr));
-    	
+		v.push_back(cnt);
+		memset(arr, 0, sizeof(arr));
+		memset(visited, 0 , sizeof(arr));
 	}
-    
-    return 0;
+	
+	for(int i = 0 ; i < v.size() ; i++){
+		cout << v[i] << "\n";
+	}
+
+	return 0;
 }
