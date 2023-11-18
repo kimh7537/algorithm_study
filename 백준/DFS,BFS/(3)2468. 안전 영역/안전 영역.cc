@@ -15,7 +15,7 @@ void dfs(int y, int x){
 		int ny = y + dy[i];
 		int nx = x + dx[i];
 		
-		if(ny < 0 | nx < 0 | ny >= N | nx >= N) continue;
+		if(ny < 0 || nx < 0 || ny >= N || nx >= N) continue;
 		if(visited[ny][nx]) continue;
 		dfs(ny, nx);
 	}
@@ -30,7 +30,7 @@ int main(){
 	for(int i = 0 ; i < N ; i++){
 		for(int j = 0 ; j < N ; j++){
 			cin >> arr[i][j];
-//			if(arr[i][j] > max_num) max_num = arr[i][j];
+//			if(arr[i][j] > max_num) max_num = arr[i][j]; 시간초과
 		}
 	}
 	
