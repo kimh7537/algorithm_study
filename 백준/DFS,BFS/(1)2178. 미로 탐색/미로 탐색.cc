@@ -22,7 +22,8 @@ void bfs(int y, int x){
 			int nx = b + dx[i];
 			
 			if( ny < 0 || nx < 0 || ny >= N || nx >= M) continue;
-			if(arr[ny][nx] && !visited[ny][nx]){
+			if(arr[ny][nx] && !visited[ny][nx]){ 
+				// if(!arr[ny][nx] && visited[ny][nx]) continue 이렇게 하면 오류 발생가능성있음, 하나만 1이고 나머지가 0이면 continue안함
 				q.push({ny, nx});
 				visited[ny][nx] = visited[a][b] + 1;
 			}	
