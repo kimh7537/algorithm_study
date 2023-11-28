@@ -1,33 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, m;
-int j;
-int res;
+
+int arr[24];
+int N, M, J, cnt, num;
 
 int main(){
-	cin >> n >> m;
-	cin >> j;
+	cin >> N >> M;
+	cin >> J;
+	for(int i = 0 ; i < J ; i++){
+		cin >> arr[i];
+	}
 	
-	int left = 1, right;
-	
-	for(int i = 0 ; i < j ; i++){
-		right = left + m - 1;
-		
-		int temp;
-		cin >> temp;
-		
-		if(left <= temp && temp <= right){
-			continue;
+	int left = 1; 
+	int right = M;
+	for(int i = 0 ; i < J ; i++){
+		num = arr[i];
+		if(right < num){
+			cnt += (num - right);
+			right = num;
+			left = right - (M-1);
 		}
-		if(left > temp){
-			res += left - temp;
-			left = temp;
-		}else if(left < temp){
-			res += temp - right;
-			left += temp - right;
+		else if(left > num){
+			cnt += (left - num);
+			left = num;
+			right = left + (M-1);
 		}
 	}
-	cout << res;
+	
+	cout << cnt;
 	
 	return 0;
 }
