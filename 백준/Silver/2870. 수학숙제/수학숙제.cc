@@ -1,62 +1,46 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int n;
-string a;
+string ret;
 vector<string> v;
-
 bool cmp(string a, string b){
 	if(a.size() == b.size()) return a < b;
-	
 	return a.size() < b.size();
 }
 
+void go(){
+	while(true){
+		if(ret.front() == '0') ret.erase(ret.begin());
+		else break;
+	}
+	if(ret.size()) v.push_back(ret);
+	else v.push_back("0");
+}
+
+
 int main(){
-	
 	cin >> n;
 	string s;
-	
 	for(int i = 0 ; i < n ; i++){
 		cin >> s;
-		
-		int prev = s[0] - '0';
-		if(0<=prev && prev<=9) a = s[0];
-		else a = "";
-		for(int j = 1 ; j < s.size() ; j++){
-			int temp = s[j] - '0';
-			if(0<=temp && temp<=9){
-				if(0<=prev && prev<=9) {
-					a += s[j];
-				}
-				else a = s[j];
-			}
+		ret = "";
+		for(int j = 0 ; j < s.size() ; j++){
+			if(s[j] < 65) ret += s[j];
 			else{
-				if(0<=prev && prev<=9) {
-					while(true){  
-						if(a.size() && a[0] == '0')a.erase(a.begin()); 
-						else break;
-					}
-					if(a.size() == 0) a = "0"; 
-					v.push_back(a);
-					a = "";
+				if(ret.size()){
+					go();
+					ret="";
 				}
 			}
-			prev = temp;
 		}
-		if(0<=prev && prev<=9) {
-			while(true){  
-				if(a.size() && a[0] == '0')a.erase(a.begin()); 
-				else break;
-			}
-			if(a.size() == 0) a = "0";
-			v.push_back(a);
-		}
-	}
+		if(ret.size()) go();
+	}	
 	
 	sort(v.begin(), v.end(), cmp);
 	
-	for(auto i : v){
-		cout << i << "\n";
+	for(string a : v){
+		cout << a << "\n";
 	}
 	
 	return 0;
