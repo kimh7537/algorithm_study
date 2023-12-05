@@ -23,7 +23,7 @@ int main(){
         cin >> o >> s; 
         if(A > B)go(asum, s);
         else if(B > A)go(bsum, s);
-		    o == 1 ? A++ : B++;
+	o == 1 ? A++ : B++;
         prev = s; 
     } 
     if(A > B)go(asum, "48:00");
