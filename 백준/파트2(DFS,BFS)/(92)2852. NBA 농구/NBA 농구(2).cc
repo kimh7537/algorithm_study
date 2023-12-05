@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+#define prev kim
 int n, o, A, B, asum, bsum;
 string s, prev; 
 string print(int a){ 
