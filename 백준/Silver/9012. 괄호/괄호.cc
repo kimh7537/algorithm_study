@@ -15,8 +15,7 @@ int main() {
 				stk.push(s[j]);
 			}
 			else{
-				char temp = stk.top();
-				if(temp == '(' && temp != s[j]){
+				if(stk.top() == '(' && s[j] == ')'){
 					stk.pop();
 				}else{
 					stk.push(s[j]);
@@ -25,6 +24,7 @@ int main() {
 		}
 		if(stk.size() == 0) cout << "YES" << "\n";
 		else cout << "NO" << "\n";
+		
 	}
 	
 	return 0;
