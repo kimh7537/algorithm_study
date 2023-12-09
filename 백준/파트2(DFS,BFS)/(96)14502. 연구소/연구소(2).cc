@@ -8,7 +8,7 @@ void dfs(int y, int x){
     for(int i = 0; i < 4; i++){
         int ny = y + dy[i];
         int nx = x + dx[i];
-        if(ny < 0 || ny >= n || nx < 0 || nx >= m || visited[ny][nx] || a[ny][nx] == 1) continue;
+        if(ny < 0 || ny >= n || nx < 0 || nx >= m || visited[ny][nx] || a[ny][nx] == 1) continue; //방문한적이 있거나, 벽일때 반복
         visited[ny][nx] = 1;
         dfs(ny, nx);
     }
@@ -17,14 +17,14 @@ void dfs(int y, int x){
 int solve(){
     fill(&visited[0][0], &visited[0][0] + 10 * 10, 0); 
     for(pair<int, int> b : virusList){
-        visited[b.first][b.second] = 1;
-        dfs(b.first, b.second);
+        visited[b.first][b.second] = 1; //바이러스(2) 방문처리
+        dfs(b.first, b.second);   //바이러스 퍼지는 곳 방문처리
     } 
 
     int cnt = 0;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            if(a[i][j] == 0 && !visited[i][j])cnt++;
+            if(a[i][j] == 0 && !visited[i][j])cnt++; //아무곳도 아니고, 방문한적 없을때
         }
     } 
     return cnt;  
