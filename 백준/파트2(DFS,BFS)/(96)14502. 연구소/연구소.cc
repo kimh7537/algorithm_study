@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, m, ret, a, b;
-int arr[12][12], visited[12][12], temp[12][12];
+int arr[12][12], visited[12][12];
 int dy[4] = {1, -1, 0 , 0};
 int dx[4] = {0, 0, 1, -1};
 vector<pair<int, int>> v1, v2;
