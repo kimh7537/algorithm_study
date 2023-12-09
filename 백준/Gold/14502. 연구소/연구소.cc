@@ -20,22 +20,12 @@ void bfs(int y, int x){
 			int ny = r1 + dy[i];
 			int nx = r2 + dx[i];
 			if(ny < 0 || nx < 0 || ny >= n || nx >= m) continue;
-			if(visited[ny][nx] == 0 && arr[ny][nx] == 0){
+			if(visited[ny][nx] == 0){
 				q.push({ny,nx});
 				visited[ny][nx] = 1;
 			}
 		}
 	}
-}
-
-void print(){
-	for(int i = 0 ; i < n ; i++){
-		for(int j = 0 ; j < m ; j++){
-			cout << visited[i][j] << " ";
-		}
-		cout << "\n";
-	}
-	cout << "\n";
 }
 
 int main(){
@@ -48,7 +38,6 @@ int main(){
 	for(int i = 0 ; i < n ; i++){
 		for(int j = 0 ; j < m ; j++){
 			cin >> arr[i][j];
-//			if(arr[i][j] >= 1) visited[i][j] = 1;
 			if(arr[i][j] == 2) v1.push_back({i, j});
 			if(arr[i][j] == 0) v2.push_back({i, j});
 		}
@@ -62,15 +51,11 @@ int main(){
 				visited[v2[i].first][v2[i].second] = 1;
 				visited[v2[j].first][v2[j].second] = 1;
 				visited[v2[k].first][v2[k].second] = 1;
-			
-//				print();
 				
 				for(int q = 0 ; q < v1.size() ; q++){
 					tie(a,b) = v1[q];
 					bfs(a,b);
 				}
-				
-//				print();
 				
 				for(int z = 0 ; z < n ; z++){
 					for(int o = 0 ; o < m ; o++){
@@ -79,8 +64,6 @@ int main(){
 						}
 					}
 				}
-//				cout << "cnt : " << cnt << " ret : " << ret << "\n\n";
-				
 				ret = max(cnt, ret);
 				
 			}
