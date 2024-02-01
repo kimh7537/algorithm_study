@@ -43,10 +43,7 @@ void bfs(int y, int x){
 			}
 		}
 	} 
-	
 }
-
- 
 
 int main(){
 	cin >> n >> m;
@@ -57,26 +54,11 @@ int main(){
 		}
 	}
 	
-	bool flag = 0;
-	for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            if(arr[i][j] == 1) {
-            	flag = 1;
-            	break;
-			}
-        }
-    }
-    if(flag == 0){
-    	cout << num << "\n";
-    	cout << cnt2 << "\n";
-    	return 0;
-	}
-	
 	num = 1;
 	while(true){
 		bfs(0,0);
 		
-		flag = 0;
+		bool flag = 0;
 		for(int i = 0 ; i < n ; i++){
 			for(int j = 0 ; j < m ; j++){
 				if(arr[i][j] == 1){
@@ -88,12 +70,7 @@ int main(){
 			break;
 		}
 
-	    
-//		if(cnt == n*m){
-//			cout << num << "\n";
-//			cout << cnt2 << "\n";
-//			break;
-//		}
+	   
 		cnt = 0;
 		cnt2 = 0;
 		num++;
