@@ -44,6 +44,7 @@ void bfs(int y, int x){
 		}
 	} 
 }
+ 
 
 int main(){
 	cin >> n >> m;
@@ -54,10 +55,7 @@ int main(){
 		}
 	}
 	
-	num = 1;
 	while(true){
-		bfs(0,0);
-		
 		bool flag = 0;
 		for(int i = 0 ; i < n ; i++){
 			for(int j = 0 ; j < m ; j++){
@@ -69,11 +67,12 @@ int main(){
 		if(flag == 0){
 			break;
 		}
-
-	   
+		
 		cnt = 0;
 		cnt2 = 0;
 		num++;
+		
+		bfs(0,0);
 	}
 	cout << num << "\n";
 	cout << cnt2 << "\n";
