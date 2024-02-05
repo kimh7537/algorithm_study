@@ -3,7 +3,7 @@ using namespace std;
 
 vector<int> v[10004];
 int dp[10004], visited[10004];
-int n, m, cnt, temp1, temp2;
+int n, m, cnt, mx, temp1, temp2;
 
 void dfs(int here){
 	visited[here] = 1;
@@ -28,13 +28,10 @@ int main(){
 		v[temp2].push_back(temp1);
 	}
 	
-	int mx = 0;
 	for(int i=1 ; i <= n ; i++){
 		dfs(i);
 		dp[i] = cnt; 
-//		cout << dp[i] << "\n";
 		mx = max(mx, dp[i]);
-//		cout << "mx : " << mx << "\n";
 		memset(visited, 0, sizeof(visited));
 		cnt = 0;
 	}
