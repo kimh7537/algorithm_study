@@ -7,7 +7,7 @@ vector<int> v[54];
 
 void dfs(int here){
 	if(v[here].size() == 0) child++;
-	if(v[here].size() == 1 && v[here][0] == d) child++;
+	if(v[here].size() == 1 && v[here][0] == d) child++; //-1 0 -> 1번 노드 삭제와 같은 예외 처리 로직
 	
 	for(int there : v[here]){
 		if(there == d) continue;
