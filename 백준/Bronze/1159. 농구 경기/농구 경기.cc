@@ -1,37 +1,14 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-int num;
-vector<char> v;
-string s;
-map<char, int> mp;
-
+#include<bits/stdc++.h>
+using namespace std; 
+int n, cnt[26]; 
+string s, ret; 
 int main(){
-	
-	cin >> num;
-	for(int i = 0 ; i < num ; i++){
-		cin >> s;
-		v.push_back(s[0]);
-	}
-	
-	for(char ch : v){
-		if(mp.find(ch) != mp.end()){
-			mp[ch] += 1;
-		}
-		else{
-			mp.insert({ch, 1});
-		}
-	}
-	int flag = 0;
-	for(auto it = mp.begin() ; it != mp.end() ; it++){
-		if((*it).second >= 5){
-			flag = 1;
-			cout << (*it).first;
-		}
-	}
-	
-	if(flag == 0){
-		cout << "PREDAJA";
-	}
-	return 0;
+    cin >> n; 
+    for(int i = 0; i < n; i++){
+        cin >> s; 
+        cnt[s[0] - 'a']++;
+    }
+    for(int i = 0; i < 26; i++)if(cnt[i] >= 5) ret+=  i + 'a'; 
+    if(ret.size()) cout << ret << "\n"; 
+    else cout << "PREDAJA" << "\n";
 }
