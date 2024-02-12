@@ -44,3 +44,26 @@
 
 <p>참고로, "DA"는 크로아티어어로 "YES"를, "NE"는 "NO"를 의미한다.</p>
 
+---
+---
+```cpp
+for(int i = 0 ; i < n ; i++){
+		cin >> s2;
+		
+  if(s2.size() < a1.size() || s2.size() < a2.size()){
+			cout << "NE" << "\n";
+		}
+		else{
+			if(s2.substr(0, it) == a1 && s2.substr(s2.size() - a2.size()) == a2){
+				cout << "DA" << "\n";      
+			}
+			else{
+				cout << "NE" << "\n";
+			}
+		}
+	}
+```
+- `a*acd` -> `acd`의 경우에서 오류가 발생함
+- `DA`가 나오는 오류 발생
+- 따라서 이렇게 사용하지 말기
+- **런타임 에러**조심하기
