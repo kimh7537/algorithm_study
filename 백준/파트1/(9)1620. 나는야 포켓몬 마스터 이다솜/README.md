@@ -1,6 +1,19 @@
 # [Silver IV] 나는야 포켓몬 마스터 이다솜 - 1620 
 
 [문제 링크](https://www.acmicpc.net/problem/1620) 
+---
+---
+```cpp
+ios_base::sync_with_stdio(false);
+cin.tie(NULL); cout.tie(NULL);
+```
+를 사용하지 않아 시간 초과의 오류가 발생함
+- int-string을 찾는 과정에서 Array의 시간 복잡도는 O(1)(참조)
+- map의 시간 복잡도는 `O(logn)`
+→ 배열의 시간복잡도가 작으므로 배열을 사용하는 경우도 고려함
+
+---
+---
 
 ### 성능 요약
 
