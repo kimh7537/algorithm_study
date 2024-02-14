@@ -19,10 +19,10 @@ int main(){
 	for(int i = 0 ; i < m ; i++){
 		cin >> s;
 		if(atoi(s.c_str()) == 0){
-      auto it = mp.find(s);
+      			auto it = mp.find(s);
 			cout << (*it).second << "\n";
 		}else {
-      auto it = mp2.find(atoi(s.c_str()));
+      			auto it = mp2.find(atoi(s.c_str()));
 			cout << (*it).second << "\n";
 		}
 	}
