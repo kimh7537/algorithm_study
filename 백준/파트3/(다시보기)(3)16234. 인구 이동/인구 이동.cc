@@ -62,16 +62,16 @@ int main(){
 						
 						for(int i1=0 ; i1<n ; i1++){
 							for(int j1=0; j1<n ; j1++){
-								if(visited[i1][j1] == chk){
+								if(visited[i1][j1] == chk){ //3. 필요없는 것/chk가 아닌 1로 넣어도 괜찮은 방법 찾아보기
 									arr[i1][j1] = temp;
 								}
-								// else if(visited[i1][j1] == 0){  //없어도 됨(ret말고 arr에 바로 해도 정답)
+								// else if(visited[i1][j1] == 0){  //1. 필요없는 것/없어도 됨(ret말고 arr에 바로 해도 정답)
 								// 	ret[i1][j1] = arr[i1][j1];
 								// }
 							}
 						}
 					}
-					else if(cnt == 1){ //없어도 됨, 이유는 인구 이동(3)에 적어둠
+					else if(cnt == 1){ //2. 필요없는 것/이유는 인구 이동(2)에 적어둠
 						visited[i][j] = 0;
 					}
 				}
