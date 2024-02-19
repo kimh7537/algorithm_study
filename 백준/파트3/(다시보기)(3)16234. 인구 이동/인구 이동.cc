@@ -65,13 +65,13 @@ int main(){
 								if(visited[i1][j1] == chk){
 									arr[i1][j1] = temp;
 								}
-								else if(visited[i1][j1] == 0){  //없어도 됨(ret말고 arr에 바로 해도 정답)
-									ret[i1][j1] = arr[i1][j1];
-								}
+								// else if(visited[i1][j1] == 0){  //없어도 됨(ret말고 arr에 바로 해도 정답)
+								// 	ret[i1][j1] = arr[i1][j1];
+								// }
 							}
 						}
 					}
-					else if(cnt == 1){
+					else if(cnt == 1){ //없어도 됨, 이유는 인구 이동(3)에 적어둠
 						visited[i][j] = 0;
 					}
 				}
@@ -83,7 +83,7 @@ int main(){
 		}
 		else{
 			result++;
-			memcpy(arr, ret, sizeof(ret));  //없어도 됨
+			// memcpy(arr, ret, sizeof(ret));  //없어도 됨
 		}
 	}
 	
