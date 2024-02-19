@@ -8,16 +8,16 @@ int main() {
 	cin.tie(NULL);
 	cin >> s;
 	for(char a : s)cnt[a]++;
-	for(int i = 'Z'; i >= 'A'; i--){
+	for(int i = 'Z'; i >= 'A'; i--){  //오름차순 정렬을 위해 Z부터 시작
 		if(cnt[i]){
-			if(cnt[i] & 1){
+			if(cnt[i] & 1){  //홀수인지 판별, 홀수의 이진수
 				mid = char(i);flag++;
 				cnt[i]--;
 			}
 			if(flag == 2)break;
 			for(int j = 0; j < cnt[i]; j += 2){
-				ret = char(i) + ret; 
-				ret += char(i);
+				ret = char(i) + ret;  //ret의 앞에 붙임
+				ret += char(i);       //ret의 뒤에 붙임
 			}
 		}
 	}
