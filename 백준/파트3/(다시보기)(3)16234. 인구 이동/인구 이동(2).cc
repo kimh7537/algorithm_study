@@ -36,7 +36,7 @@ int main(){
                     v.push_back({i,j});
                     sum = a[i][j];
                     dfs(i,j,v);
-                    if(v.size() == 1) continue;  
+                    if(v.size() == 1) continue;  //visited[i][j]를 다시 0으로 변경하지 않는 이유->어차피 [i][j]를 탐색해서 아무곳도 가지 못한다면, 어디서 탐색해도 연결되지 않은 곳임
                     for(pair<int,int> b : v){ 
                         a[b.first][b.second] = sum / v.size();
                         flag = 1;
