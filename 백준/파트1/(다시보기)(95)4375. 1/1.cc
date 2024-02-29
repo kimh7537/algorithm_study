@@ -4,7 +4,7 @@ typedef long long ll;
 int n;
 int main(){ 
 	while(scanf("%d", &n) != EOF){
-		ll cnt = 1, ret = 1; 
+		int cnt = 1, ret = 1; 
 		while(true){
 			if(cnt % n == 0){
 				printf("%d\n", ret);
