@@ -65,7 +65,7 @@ int main(){
 								if(visited[i1][j1] == chk){ //3. 필요없는 것/chk가 아닌 1로 넣어도 괜찮은 방법 찾아보기
 									arr[i1][j1] = temp;
 								}
-								// else if(visited[i1][j1] == 0){  //1. 필요없는 것/없어도 됨(ret말고 arr에 바로 해도 정답)
+								// else if(visited[i1][j1] == 0){  //1. 필요없는 것/없어도 됨(ret말고 arr에 바로 해도 정답), visited가 있어서 1인곳은 다시 방문안하기 때문
 								// 	ret[i1][j1] = arr[i1][j1];
 								// }
 							}
