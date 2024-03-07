@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> 
 using namespace std;
-const int INF = 987654321;
-int dp[64][64][64], a[3], n, visited[64][64][64]; 
+
+int a[3], n, visited[64][64][64]; 
 int _a[6][3] = {
 	{9, 3, 1}, 
 	{9, 1, 3}, 
@@ -27,7 +27,7 @@ int solve(int a, int b, int c){
             int na = max(0, a - _a[i][0]);
             int nb = max(0, b - _a[i][1]); 
             int nc = max(0, c - _a[i][2]); 
-            if(visited[na][nb][nc]) continue;
+            if(visited[na][nb][nc]) continue;   //이게 없으면 메모리 초과됨
             visited[na][nb][nc] = visited[a][b][c] + 1;  
             q.push({na, nb, nc}); 
         }
@@ -38,8 +38,8 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-	cin >> n; 
-	for(int i = 0; i < n; i++) cin >> a[i]; 
-	cout << solve(a[0], a[1], a[2]) << "\n"; 
+    cin >> n; 
+    for(int i = 0; i < n; i++) cin >> a[i]; 
+    cout << solve(a[0], a[1], a[2]) << "\n"; 
     return 0;
 }
