@@ -40,7 +40,7 @@ void bfs2(int y, int x){
 			int nx = x + dx[i];
 			if(ny < 0 || nx < 0 || ny >= r || nx >= c || temp[ny][nx] != 987654321) continue;   //temp[ny][nx] != 987654321 추가하기기
 			if(arr[ny][nx] == '#') continue;
-			if(arr[ny][nx] == '.' || arr[ny][nx] == 'J' || arr[ny][nx] == 'F'){      // arr[ny][nx] == 'F' 추가해주기, 2번 오류 해
+			if(arr[ny][nx] == '.' || arr[ny][nx] == 'J' || arr[ny][nx] == 'F'){      // arr[ny][nx] == 'F' 추가해주기
 				q.push({ny, nx});
 				temp[ny][nx] = temp[y][x] + 1;
 			}
@@ -57,6 +57,9 @@ void bfs2(int y, int x){
 		}
 	}
 }
+
+
+
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
