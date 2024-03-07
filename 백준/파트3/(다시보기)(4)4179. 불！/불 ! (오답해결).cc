@@ -38,7 +38,7 @@ void bfs2(int y, int x){
 		for(int i = 0 ; i < 4 ; i++){
 			int ny = y + dy[i];
 			int nx = x + dx[i];
-			if(ny < 0 || nx < 0 || ny >= r || nx >= c || temp[ny][nx] != 987654321) continue;   //emp[ny][nx] != 987654321 추가하기기
+			if(ny < 0 || nx < 0 || ny >= r || nx >= c || temp[ny][nx] != 987654321) continue;   //temp[ny][nx] != 987654321 추가하기기
 			if(arr[ny][nx] == '#') continue;
 			if(arr[ny][nx] == '.' || arr[ny][nx] == 'J' || arr[ny][nx] == 'F'){      // arr[ny][nx] == 'F' 추가해주기
 				q.push({ny, nx});
@@ -47,7 +47,8 @@ void bfs2(int y, int x){
 		}
 	}
 	
-	for(i기
+	for(auto it : v1){
+		fill(&temp[0][0], &temp[0][0] + 1004 * 1004, 987654321);
 		bfs2(it.first, it.second);
 	}
 	bfs1(p1.first, p1.second);
