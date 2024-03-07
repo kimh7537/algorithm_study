@@ -26,7 +26,7 @@ int bfs(int a, int b, int c){
 			int nb = max(0, b - v[1]);
 			int nc = max(0, c - v[2]);
 			
-			if(visited[na][nb][nc]) continue;
+			if(visited[na][nb][nc]) continue;  //이거때문에 메모리 초과 발생
 			if(na == 0 && nb == 0 && nc == 0) return visited[a][b][c];
 
 			q.push(make_tuple(na, nb, nc));
