@@ -40,15 +40,43 @@ void bfs2(int y, int x){
 			int nx = x + dx[i];
 			if(ny < 0 || nx < 0 || ny >= r || nx >= c || temp[ny][nx] != 987654321) continue;   //temp[ny][nx] != 987654321 추가하기기
 			if(arr[ny][nx] == '#') continue;
-			if(arr[ny][nx] == '.' || arr[ny][nx] == 'J' || arr[ny][nx] == 'F'){      // arr[ny][nx] == 'F' 추가해주기
+			if(arr[ny][nx] == '.' || arr[ny][nx] == 'J' || arr[ny][nx] == 'F'){      // arr[ny][nx] == 'F' 추가해주기, 2번 오류 해
 				q.push({ny, nx});
 				temp[ny][nx] = temp[y][x] + 1;
 			}
 		}
 	}
+	for(int i = 0 ; i < r ; i++){
+		for(int j = 0 ; j < c ; j++){
+			if(arr[i][j] != 'F'){
+				fvisited[i][j] = min(fvisited[i][j], temp[i][j]);
+			}
+			else{
+				fvisited[i][j] = 1;
+			}
+		}
+	}
+}
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 	
+	cin >> r >> c;
+	
+	fill(&fvisited[0][0], &fvisited[0][0] + 1004 * 1004, 987654321);
+	
+	for(int i=0 ; i < r ; i++){
+		for(int j=0 ; j < c ; j++){
+			cin >> arr[i][j];
+			if(arr[i][j] == 'J') p1 = {i, j};
+			else if(arr[i][j] == 'F') v1.push_back({i, j});
+		}
+	}
+	
+
 	for(auto it : v1){
-		fill(&temp[0][0], &temp[0][0] + 1004 * 1004, 987654321);
+		fill(&temp[0][0], &temp[0][0] + 1004 * 1004, 987654321);   //추가, 1번 오류 해결
 		bfs2(it.first, it.second);
 	}
 	bfs1(p1.first, p1.second);
