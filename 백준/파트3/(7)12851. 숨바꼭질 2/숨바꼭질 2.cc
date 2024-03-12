@@ -26,10 +26,10 @@ void solve(int idx, int sum){
 		if(0 <= sum-1 && !visited[sum-1]){
 			q.push({idx+1, sum-1});
 		}
-		if(sum+1 <= 100000 && !visited[sum + 1]){
+		if(sum+1 <= k+1 && !visited[sum + 1]){
 			q.push({idx+1, sum+1});
 		}
-		if(sum*2 <= 100000 && !visited[sum * 2]){
+		if(sum*2 <= k+1 && !visited[sum * 2]){
 			q.push({idx+1, sum*2});
 		}
 	}
