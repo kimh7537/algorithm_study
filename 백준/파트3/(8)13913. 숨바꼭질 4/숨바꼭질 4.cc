@@ -19,7 +19,6 @@ int main(){
 	
 	q.push(n);
 	visited[n] = 1;
-	cnt[n] = 1;
 	while(q.size()){
 		int num = q.front();
 		q.pop();
