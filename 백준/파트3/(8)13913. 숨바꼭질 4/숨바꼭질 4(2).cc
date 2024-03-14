@@ -2,7 +2,7 @@
 using namespace std;
 #define prev aaa
 #define next aaaa
-const int max_n = 200004;
+const int max_n = 200004;   //목표지점 9만/시작 지점 6만 -> 12만으로 순간이동하고 가는 경우가 더 빠를 수도 있기 때문에 20000으로 해둠
 int visited[max_n], prev[max_n], n, k, ret, here, cnt, next;   
 vector<int> v; 
 queue<int> q;  
