@@ -5,7 +5,6 @@ int n, k;
 queue<int> q;
 int visited[100004];
 int value[100004];
-int cnt[1000004];
 vector<int> v;
 
 int main(){
@@ -27,16 +26,10 @@ int main(){
 		
 		for(int next : {num-1, num+1, num*2}){
 			if(0 <= next && next <= 100000){
-//				if(visited[next]){
-//					if(visited[next] == visited[num] + 1){
-//						cnt[next] += cnt[num];
-//					}
-//				}
 				if(!visited[next]){
 					q.push(next);
 					visited[next] = visited[num] + 1;
 					value[next] = num;
-//					cnt[next] += cnt[num];
 				}
 			}	
 		}
@@ -57,9 +50,6 @@ int main(){
 		int temp1 = value[temp];
 		temp = temp1;
 	}
-	cout << "\n";
-	
-//	cout << cnt[k] << "\n";
 	
 	return 0;
 }
