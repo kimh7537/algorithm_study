@@ -18,7 +18,7 @@ int main() {
             ret = visited[k]; 
             break;
         }
-		    for(int next : {here + 1, here - 1, here * 2}){
+	for(int next : {here + 1, here - 1, here * 2}){
             if(next >= max_n || next < 0 || visited[next]) continue;  
             visited[next] = visited[here] + 1; 
             prev[next] = here;
