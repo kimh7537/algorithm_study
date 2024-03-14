@@ -23,7 +23,7 @@ int main() {
             visited[next] = visited[here] + 1; 
             prev[next] = here;
             q.push(next); 
-		    } 
+	} 
     }   
     for(int i = k; i != n; i = prev[i]){
         v.push_back(i);
