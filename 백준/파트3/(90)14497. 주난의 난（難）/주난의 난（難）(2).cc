@@ -17,7 +17,7 @@ int main(){
     for(int i = 0; i < n; i++){
         scanf("%s", a[i]); 
     }  
-    q.push(1000 * y1 + x1);
+    q.push(1000 * y1 + x1); //값의 범위보다 큰 값으로 설정하기, 300 * y1 + x1 일때 x1이 300이면 예상하지 않은 값이 나옴
     visited[y1][x1] = 1; 
     int cnt = 0; 
     while(a[y2][x2] != '0'){ 
@@ -34,7 +34,7 @@ int main(){
                 visited[ny][nx] = cnt;  
                 if(a[ny][nx] != '0'){
                     a[ny][nx] = '0'; 
-                    temp.push(1000 * ny + nx);
+                    temp.push(1000 * ny + nx);  //1이었던 부분 좌표값
                 }
                 else q.push(1000 * ny + nx); 
             }
