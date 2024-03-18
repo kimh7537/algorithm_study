@@ -9,11 +9,11 @@ queue<pair<int, int>> waterQ, water_tempQ, swanQ, swan_tempQ;
 string s;
 void Qclear(queue<pair<int, int>> &q){
    queue<pair<int, int>> empty;
-   swap(q,empty);
+   swap(q,empty);  //보기
 }  
 void water_melting(){
     while(waterQ.size()){
-		    tie(y, x) = waterQ.front();  
+	tie(y, x) = waterQ.front();  
         waterQ.pop();
         for(int i = 0; i < 4; i++){
             int ny = y + dy[i];
@@ -29,7 +29,7 @@ void water_melting(){
 }
 bool move_swan(){
     while(swanQ.size()){
-		    tie(y, x) = swanQ.front(); 
+	tie(y, x) = swanQ.front(); 
         swanQ.pop();
         for(int i = 0; i < 4; i++){
             int ny = y + dy[i];
