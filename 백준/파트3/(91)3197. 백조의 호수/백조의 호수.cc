@@ -25,7 +25,7 @@ void bfs(){
 			if(arr[ny][nx] == 'X'){
 				arr[ny][nx] = '.';
 				temp.push({ny, nx});
-			}else{
+			}else{   //필요없음, 이미 main에서 visited[1]로 다 바꿔둠
 				wq.push({ny, nx});
 			}
 			visited[ny][nx] = 1;
