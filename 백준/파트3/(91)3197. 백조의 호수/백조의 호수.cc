@@ -31,7 +31,7 @@ void bfs(){
 			visited[ny][nx] = 1;
 		}
 	}
-	wq = temp;
+	wq = temp;  //중요
 }
 
 void sbfs(){
@@ -60,7 +60,7 @@ void sbfs(){
 			svisited[ny][nx] = 1;	
 		}
 	}
-	sq = temp;
+	sq = temp;   //중요
 }
 
 
