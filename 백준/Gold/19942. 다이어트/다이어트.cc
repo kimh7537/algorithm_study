@@ -1,47 +1,83 @@
-#include<bits/stdc++.h>
-using namespace std;  
-typedef long long ll; 
-const int INF = 987654321;
-int n, mp, mf, ms, mv;
-int b, c, d, e, ret = INF, sum;
-struct A{
-	int mp, mf, ms, mv, cost; 
-}a[16]; 
-map<int, vector<vector<int>>> ret_v;
-int main(){
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    cin >> n; 
-    cin >> mp >> mf >> ms >> mv;  
-    for(int i = 0; i < n; i++){
-    	cin >> a[i].mp >> a[i].mf >> a[i].ms >> a[i].mv >> a[i].cost;  
-	}
-	for(int i = 1; i < (1 << n); i++){
-		b = c = d = e = sum = 0;
-        vector<int> v; 
-		for(int j = 0; j < n; j++){
-			if(i & (1 << j)){
-                v.push_back(j + 1);
-				b += a[j].mp;
-				c += a[j].mf;
-				d += a[j].ms;
-				e += a[j].mv;
-				sum += a[j].cost;
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, ck[5], arr[20][10], res = 987654321;
+vector<vector<int>> ret;
+
+bool check(vector<int> c){
+	int temp[10] = {0, }, cnt = 0;
+	if(c.size()){
+		for(int i = 0 ; i < 4 ; i++){
+			for(auto it : c){
+				temp[i] += arr[it][i];
+			}
+			if(temp[i] >= ck[i]){
+				cnt++;
 			}
 		}
-		if(b >= mp && c >= mf && d >= ms && e >= mv){
-			if(ret >= sum){
-				ret = sum;
-                ret_v[ret].push_back(v); 
+	}
+	if(cnt == 4) return true;
+	else return false;
+}
+
+void solve(int idx, vector<int> vv){
+	if(idx == n){
+		if(check(vv)){
+			int t1 = 0;
+			for(auto it : vv){
+				t1 += arr[it][4];
 			}
-		} 
-	}  
-	if(ret == INF) cout << -1 << '\n';
-	else{
-        sort(ret_v[ret].begin(), ret_v[ret].end());  
-		cout << ret << "\n";
-		for(int a : ret_v[ret][0]){
-			cout << a << " ";
-		} 
-	}  
-	return 0; 
+			if(t1 < res){
+				res = t1;
+				ret.clear();
+				sort(vv.begin(), vv.end());
+				ret.push_back(vv);
+			}else if(t1 == res){
+				sort(vv.begin(), vv.end());
+				ret.push_back(vv);
+			}
+		}
+		return;	
+	}
+
+	solve(idx+1, vv);
+	
+	vv.push_back(idx+1);
+	solve(idx+1, vv);
+}
+
+int main(){
+	cin >> n;
+	
+	for(int i = 0 ; i < 4 ; i++){
+		cin >> ck[i];
+	}
+	
+	for(int i = 1 ; i <= n ; i++){
+		for(int j = 0 ; j < 5; j++){
+			cin >> arr[i][j];
+		}
+	}
+	
+	vector<int> v;
+	solve(0, v);
+	
+	if(res != 987654321){
+		cout << res << "\n";
+		sort(ret.begin(), ret.end());
+//		for(auto it : ret){
+//			for(auto jt : it){
+//				cout << jt << " ";
+//			}
+//			cout << "\n";
+//		}
+		for(int i = 0 ; i < ret[0].size() ; i++){
+			cout << ret[0][i] << " ";
+		}
+	}else{
+		cout << -1 << "\n";
+	}
+	
+	
+	return 0;
 }
