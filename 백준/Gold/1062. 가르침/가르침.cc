@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int n, m, words[51];
-string s; 
+string s;
+
 int count(int mask) {
     int cnt = 0;
     for (int word : words) { 
