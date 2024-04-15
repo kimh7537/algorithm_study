@@ -7,18 +7,6 @@ int main(){
 	
 	cin >> s;
 	
-//	if(s.find("pi") != string::npos){
-//		auto it = s.find("pi");
-//		s.erase(it, 2);
-//	}
-//	if(s.find("ka") != string::npos){
-//		auto it = s.find("ka");
-//		s.erase(it, 2);
-//	}
-//	if(s.find("chu") != string::npos){
-//		auto it = s.find("chu");
-//		s.erase(it, 3);
-//	}
 	bool flag = 0;
 	
 	while(s.size()){
@@ -42,8 +30,6 @@ int main(){
 	}else{
 		cout << "YES" << "\n";
 	}
-
-//	cout << s << "\n";
 	
 	return 0;
 }
