@@ -17,7 +17,7 @@ int main(){
                 x = 0; 
             }
 	} 
-	if(x > 0) D.push_back(x);
+	if(x > 0) D.push_back(x);//if문이 없으면 배열에 숫자가 없어도 x초기값 0이 deque에 들어가게 됨, if문 없을때 반례 : 1 R 0 []   정답:[], 실제정답:[]
 
         bool error = false, rev = false;
  	for(char a : P){
