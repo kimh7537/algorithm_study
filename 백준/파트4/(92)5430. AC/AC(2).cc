@@ -13,7 +13,7 @@ int main(){
             if(c == '[' || c == ']') continue;
             if(c >= '0' && c <= '9') x = x*10 + c-'0';
             else{
-                if(x > 0) D.push_back(x);
+                if(x > 0) D.push_back(x); //if문 없어도 됨
                 x = 0; 
             }
 	} 
