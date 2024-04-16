@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int t, n, m, a, b, cnt, visited[1004];
+vector<int> v[1004];
+bool flag;
+map<pair<int,int>, int> mp;
+
+void dfs(int here){
+	visited[here] = 1;
+	cnt++;
+	for(int it : v[here]){
+		if(visited[it]) continue;
+		dfs(it);
+	}
+	return;
+}
+
+int main(){
+	cin >> t;
+	for(int i = 0 ; i < t ; i++){
+		cin >> n;
+		cin >> m;
+		for(int j = 0 ; j < m ; j++){
+			cin >> a >> b;
+			v[a].push_back(b);
+			v[b].push_back(a);
+
+			if(a > b) {
+				mp[{b, a}]++;
+			}else if(a < b){
+				mp[{a, b}]++;
+			} 
+		}
+		
+		dfs(1);
+		if(cnt == n){
+			flag = 0;
+		}else{
+			flag = 1;
+		}
+		
+		for(auto it : mp){
+			if(it.second > 1) {
+				flag = 1;
+				break;
+			}
+		}
+		
+		if(m != n-1){
+			flag = 1;
+		}
+		
+		
+		for(int i = 1 ; i <= n ; i++){
+			v[i].clear();
+		}
+		memset(visited, 0 , sizeof(visited));
+		cnt = 0;
+		mp.clear();
+		
+		if(flag) cout << "graph\n";
+		else cout << "tree\n";
+	}
+	
+	
+	return 0;
+}
