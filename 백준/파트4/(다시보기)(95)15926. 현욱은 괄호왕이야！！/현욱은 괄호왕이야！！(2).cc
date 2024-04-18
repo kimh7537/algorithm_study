@@ -16,10 +16,10 @@ int main() {
       s.pop();
       if (!s.empty()) {
       	ret = max(ret, i - s.top()); 
-	    } else { 
-	  	    s.push(i);
-	    } 
-  	}
+      } else { 
+	s.push(i);
+      } 
+    }
   }
   cout << ret << '\n';
 
