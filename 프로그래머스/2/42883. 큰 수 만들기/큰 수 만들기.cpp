@@ -2,13 +2,12 @@
 
 using namespace std;
 
-int n, first, second, num = -1, idx;
+int first, second, num = -1, idx;
 vector<int> v;
 
 string solution(string number, int k) {
     string answer = "";
 
-    n = number.size();
     first = 0, second = k;
     
     while(k > 0 && second < number.size()){
