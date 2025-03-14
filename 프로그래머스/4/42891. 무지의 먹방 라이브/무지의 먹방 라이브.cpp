@@ -2,6 +2,10 @@
 
 using namespace std;
 
+bool cmp(pair<int, int> a, pair<int, int> b){
+    return a.second < b.second;
+}
+
 int solution(vector<int> food_times, long long k) {
     long long total = accumulate(food_times.begin(), food_times.end(), 0LL);
     if (total <= k) return -1;  // 더 이상 먹을 음식이 없으면 -1 반환
@@ -37,10 +41,8 @@ int solution(vector<int> food_times, long long k) {
         leftover.push_back(pq.top());
         pq.pop();
     }
-
-    sort(leftover.begin(), leftover.end(), [](pair<int, int> a, pair<int, int> b) {
-        return a.second < b.second;
-    });
+    
+    sort(leftover.begin(), leftover.end(), cmp);
 
     return leftover[k % remaining].second;  // 남은 음식 중 k번째의 원래 인덱스 반환
 }
