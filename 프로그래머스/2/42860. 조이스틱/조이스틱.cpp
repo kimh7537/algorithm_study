@@ -1,23 +1,23 @@
-#include <string>
-#include <vector>
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int solution(string name) {
-    int answer = 0;
     int n = name.size();
-    int minMove = n-1;
-    for(int x = 0; x < n; x++){
-        int y = x + 1; // x 오른쪽에 있으면서 A가 아닌 문자가 있는 위치를 y라하자
-        while( y < n && name[y] == 'A') y++;
-        minMove = min( minMove, min( x+x+(n-y), x+(n-y)+(n-y) ) );
+    int min_move = n - 1;  // 기본적으로 오른쪽으로 쭉 가는 경우
+    int total_change = 0;
+    
+    // 문자 변경 횟수 계산
+    for (int i = 0; i < n; i++) {
+        // 알파벳 변경 횟수
+        total_change += min(name[i] - 'A', 'Z' - name[i] + 1);
+        
+        // 이동 경로 최적화
+        int next = i + 1;
+        while (next < n && name[next] == 'A') {
+            next++; // 연속된 A는 건너뛰기
+        }
+        min_move = min(min_move, i + n - next + min(i, n - next));
     }
     
-    for(int i = 0 ; i < name.size() ; i++){
-        if(name[i] - 'N' <= 0) answer += (name[i] - 'A');
-        else if(name[i] - 'N' > 0) answer += ('Z' - name[i] + 1); 
-    }
-    
-    return answer + minMove;
+    return total_change + min_move;
 }
