@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int n, res, temp;
+int n, res, temp, prev_num;
 vector<int> dist, cost;
 
 int main(){
@@ -20,11 +20,13 @@ int main(){
 	}
 	
 	res = cost[0] * dist[0];
-	for(int i = 1 ; i < n ; i++){
-		if(cost[i-1] >= cost[i]){
-			res += (cost[i] * dist[i]);
-		}else if(cost[i-1] < cost[i]){
-			res += (cost[i-1] * dist[i]);
+	prev_num = cost[0];
+	for(int i = 1 ; i < n - 1; i++){
+		if(prev_num >= cost[i]){
+			prev_num = cost[i];
+			res += (prev_num * dist[i]);
+		}else if(prev_num < cost[i]){
+			res += (prev_num * dist[i]);
 		}
 	}
 	
