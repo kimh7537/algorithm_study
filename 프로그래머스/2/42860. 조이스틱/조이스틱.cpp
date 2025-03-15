@@ -1,55 +1,27 @@
-#include <iostream>
-#include <queue>
-#include <cmath>
+#include <string>
+#include <vector>
+
 using namespace std;
 
-struct Data {
-    string s;
-    int d, i;
-    Data(string str, int distance, int idx) : s(str), d(distance), i(idx) {}
-};
+int y;
 
 int solution(string name) {
     int answer = 0;
-    string sbFirst(name.length(), 'A');
     
-    queue<Data> que;
-    que.push(Data(sbFirst, 0, 0));
+    int len = name.length();
+    int mv = len - 1;
     
-    while (!que.empty()) {
-        Data data = que.front();
-        que.pop();
+    for(int x = 0 ; x < len ; x++){
+        answer += min(name[x] - 'A', 'Z' - name[x] + 1);
         
-        string temp = data.s;
-        
-        if (abs(name[data.i] - data.s[data.i]) > 13) { // 뒤로 움직이는 게 빠를 때
-            data.d += (26 - abs(name[data.i] - data.s[data.i]));
-        } else {
-            data.d += abs(name[data.i] - data.s[data.i]);
+        y = x + 1;
+        while(y < len && name[y] == 'A'){
+            y++;
         }
         
-        temp[data.i] = name[data.i]; // 문자 변경
-        data.s = temp;
-        
-        // 앞으로 전진
-        if (data.i + 1 == name.length()) {
-            que.push(Data(data.s, data.d + 1, 0));
-        } else {
-            que.push(Data(data.s, data.d + 1, data.i + 1));
-        }
-        
-        // 뒤로 후진
-        if (data.i - 1 == -1) {
-            que.push(Data(data.s, data.d + 1, name.length() - 1));
-        } else {
-            que.push(Data(data.s, data.d + 1, data.i - 1));
-        }
-        
-        // 정답 찾았을 때
-        if (data.s == name) {
-            answer = data.d;
-            break;
-        }
+        mv = min(mv, min(x + x + len - y, len-y+len-y+x));    
     }
+    answer += mv;
+    
     return answer;
 }
