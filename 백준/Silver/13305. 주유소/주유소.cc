@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int n, res, temp, prev_num;
-vector<int> dist, cost;
+typedef long long ll;
+
+ll res, n, temp, prev_num;
+vector<ll> dist, cost;
 
 int main(){
 	ios_base::sync_with_stdio(false);
