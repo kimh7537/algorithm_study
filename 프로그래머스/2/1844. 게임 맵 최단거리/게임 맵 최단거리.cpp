@@ -27,13 +27,7 @@ void bfs(vector<vector<int>> maps){
             visited[ny][nx] = visited[y][x] + 1;
         }
     }
-    
-    // for(int i = 0 ; i < n ; i++){
-    //     for(int j = 0 ; j < m ; j++){
-    //         cout << visited[i][j] << " ";
-    //     }
-    //     cout << "\n";
-    // }
+
 }
 
 int solution(vector<vector<int> > maps){
