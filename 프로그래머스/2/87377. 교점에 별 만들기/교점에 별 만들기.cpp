@@ -17,6 +17,7 @@ vector<string> solution(vector<vector<int>> line) {
 
             long long xNum = B * F - E * D;
             long long yNum = E * C - A * F;
+          
             if (xNum % denom != 0 || yNum % denom != 0) continue; // 정수 아님
 
             long long x = xNum / denom;
@@ -28,12 +29,28 @@ vector<string> solution(vector<vector<int>> line) {
         }
     }
 
-    int width  = maxX - minX + 1;
-    int height = maxY - minY + 1;
-    vector<string> answer(height, string(width, '.'));
+    // 3단계: '.'으로 꽉 찬 판 만들기
+    int width = maxX - minX + 1;    // 가로 칸 수
+    int height = maxY - minY + 1;   // 세로 칸 수
 
-    for (auto& [x, y] : points) {
-        answer[maxY - y][x - minX] = '*';
+    vector<string> answer;
+    for (int r = 0; r < height; r++) {
+        string row = "";
+        for (int c = 0; c < width; c++) {
+            row += ".";
+        }
+        answer.push_back(row);
     }
+
+    // 4단계: 교점마다 '*' 찍기
+    for (int i = 0; i < points.size(); i++) {
+        long long x = points[i].first;
+        long long y = points[i].second;
+
+        int row = maxY - y;   // 맨 위(maxY)에서 몇 칸 아래인가
+        int col = x - minX;   // 맨 왼쪽(minX)에서 몇 칸 오른쪽인가
+        answer[row][col] = '*';
+    }
+
     return answer;
 }
