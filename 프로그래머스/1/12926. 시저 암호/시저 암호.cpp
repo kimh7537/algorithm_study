@@ -7,27 +7,22 @@ string solution(string s, int n) {
     
     for(int i = 0 ; i < s.size() ; i++){
         if(s[i] == ' ') {
-            answer += ' ';
+            answer += s[i];
             continue;
         }
-        
-        char num;
+        int num = s[i] + n;
         if('a' <= s[i] && s[i] <= 'z'){
-            if(s[i] + n > 'z') {
-                num = s[i] + n - 26;
-            }else{
-                num = s[i] + n;
+            if(num > 'z') {
+                num -= 26;
             }
         }
         else if('A' <= s[i] && s[i] <= 'Z'){
-            if(s[i] + n > 'Z') {
-                num = s[i] + n - 26;
-            }else{
-                num = s[i] + n;
+            if(num > 'Z') {
+                num -= 26;
             }
         }
-        answer += num;
+        answer += (char)num;
     }
-
+    //cout << (int)'z' << " " << (int)'A';
     return answer;
 }
