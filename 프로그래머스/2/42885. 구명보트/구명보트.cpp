@@ -1,19 +1,40 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
 
+int first, second;
+
 int solution(vector<int> people, int limit) {
-    sort(people.begin(), people.end());
-
-    int l = 0;
-    int r = people.size() - 1;
     int answer = 0;
+    sort(people.begin(), people.end());
+    int s = people.size();
+    vector<int> temp(s, 1);
 
-    while (l <= r) {
-        if (people[l] + people[r] <= limit) {
-            l++;   // 가장 가벼운 사람도 같이 탑승
+    int r = 0;
+    int l = people.size() - 1;
+    int num = 0;
+
+    while(r < l){
+
+        //cout << "r : " << r << " l : " << l << "\n";
+        num = people[r] + people[l];
+        //cout << "num : " << num << "\n";
+        if(num > limit){
+            l--;
+        }else if(num <= limit){
+            answer++;
+            temp[r] = 0;
+            temp[l] = 0;
+            int a = 0;
+            int b = temp.size() - 1;
+            r++;   // a, b 계산 대신
+            l--;
         }
-        r--;       // 가장 무거운 사람은 항상 탑승
-        answer++;  // 보트 1개 사용
+    }
+    for(int it : temp){
+        if(it == 1){
+            answer++;
+        }
     }
 
     return answer;
