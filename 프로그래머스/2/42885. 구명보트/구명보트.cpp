@@ -15,18 +15,13 @@ int solution(vector<int> people, int limit) {
     int num = 0;
 
     while(r < l){
-
-        //cout << "r : " << r << " l : " << l << "\n";
         num = people[r] + people[l];
-        //cout << "num : " << num << "\n";
         if(num > limit){
             l--;
         }else if(num <= limit){
             answer++;
             temp[r] = 0;
             temp[l] = 0;
-            int a = 0;
-            int b = temp.size() - 1;
             r++;   // a, b 계산 대신
             l--;
         }
