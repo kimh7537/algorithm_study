@@ -1,10 +1,11 @@
 #include <vector>
 #include <algorithm>
+#include <cstring>
 using namespace std;
 
 int n;
-vector<vector<int>> board;
-vector<vector<int>> memo;   // memo[i][j] = -1이면 아직 계산 안 함
+int board[100001][4];
+int memo[100001][4];        // -1이면 아직 계산 안 함
 
 // f(i, j) = i행에서 j열을 밟았을 때, i행부터 마지막 행까지 얻을 수 있는 최대 점수
 int f(int i, int j) {
@@ -20,11 +21,14 @@ int f(int i, int j) {
 
 int solution(vector<vector<int>> land) {
     n = land.size();
-    board = land;                              // 전역에 한 번만 저장 (복사는 이때 1번)
-    memo.assign(n, vector<int>(4, -1));
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < 4; j++)
+            board[i][j] = land[i][j];
+
+    memset(memo, -1, sizeof(memo));            // 전부 -1로 초기화
 
     int answer = 0;
-    for (int j = 0; j < 4; j++)                // 첫 행의 4칸 중 어디서 시작할지
+    for (int j = 0; j < 4; j++)
         answer = max(answer, f(0, j));
     return answer;
 }
