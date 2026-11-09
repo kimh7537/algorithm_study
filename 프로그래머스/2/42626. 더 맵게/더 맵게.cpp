@@ -11,21 +11,23 @@ int solution(vector<int> scoville, int K) {
         pq.push(it);
     }
     
-    while(pq.top() < K){
-        if(pq.size() == 1) {
-            answer = -1;
+    while(pq.size() >=2){
+        int a = pq.top();
+        pq.pop();
+        int b = pq.top();
+        pq.pop();
+        
+        if(a >= K){
             break;
         }
-        int n1 = pq.top();
-        pq.pop();
-        int n2 = pq.top();
-        pq.pop();
-        int temp = n1 + (n2 * 2);
+        
+        int temp = a + (b * 2);
         pq.push(temp);
         answer++;
     }
     
-    
+    if(pq.top() < K) answer = -1;
+
     
     return answer;
 }
